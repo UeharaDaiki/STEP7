@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Company;
 
-class HomeController extends Controller
+class ProductDetailController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,8 +23,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index($id)
     {
-        return view('home');
+        $product = Product::find($id);
+        $companies = Company::all();
+        //dd($products);
+        return view('productDetail',compact('product','companies'));
     }
 }

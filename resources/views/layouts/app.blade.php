@@ -12,9 +12,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ ('css/productList.css') }}">
+    
 </head>
 <body>
     <div id="app">
@@ -76,5 +77,9 @@
             @yield('content')
         </main>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/productDelete.js') }}"></script> <!-- 修正: スクリプトのパスを更新 -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])  <!-- Viteのスクリプトはそのまま -->
+
 </body>
 </html>

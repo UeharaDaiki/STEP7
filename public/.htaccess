@@ -18,4 +18,11 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # DELETEメソッドを許可する設定
+    RewriteCond %{REQUEST_METHOD} ^DELETE$
+    RewriteRule ^ - [L]
+
+    RewriteEngine On
+    RewriteRule ^product/delete/([0-9]+)$ /index.php [QSA,L]
 </IfModule>

@@ -1,0 +1,34 @@
+.product-table tr:nth-child(odd) td{
+    border-spacing: 0;
+    width: 200px;
+    text-align: center;
+    background: #6d6d6d;
+}
+
+.product-table th, .product-table td{
+    border-bottom: 2px solid #000;
+    text-align: center;
+    padding: 10px;
+}
+.product-table img {
+    max-width: 50px; /* 最大幅を100pxに設定 */
+    max-height: 50px; /* 最大高さを100pxに設定 */
+    object-fit: cover; /* 画像が枠に収まるように調整 */
+}
+
+.detail-btn{
+    background: blue;
+    display: inline-block;
+}
+
+.delete-btn{
+    background: red;
+    display: inline-block;
+    width: auto;
+}
+
+.regist-btn{
+    background: orange;
+    display: inline-block;
+    width: auto;
+}
