@@ -1,0 +1,68 @@
+.item{
+    display: inline-block;
+    font-weight: bold;
+    width: 100px;
+}
+
+.input-item{
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end; /* 入力フィールドを右寄せ */
+    width: 100%;
+
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+/*
+.input{
+    width: 100%;
+    margin-right: 100px;
+}
+    */
+.card{
+    max-width:50%;
+    margin: auto;
+}
+.btn-container {
+    display: flex; /* 横並びにする */
+    gap: 10px; /* ボタン間にスペースを追加 */
+    justify-content: flex-start; /* ボタンを左寄せ */
+    width: auto;
+}
+
+.regist-btn, .back-btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.regist-btn{
+    display: inline-flex;
+    background-color: orange;
+}
+/*
+.back-btn{
+    display: inline-flex;
+    background-color: aqua;
+}
+    */
+.back-btn {
+    display: inline-block; /* aタグをブロック要素にしてボタンのように表示 */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: aqua;
+    color: black;
+    text-align: center; /* テキストを中央に */
+    text-decoration: none; /* リンクの下線を消す */
+}
+.required{
+    color: red;
+}
