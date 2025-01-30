@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('styles')
+    <!-- このページでだけ適用するCSS -->
+    <link rel="stylesheet" href="{{ asset('css/productDetail.css') }}">
+@endsection
 
 @section('content')
 <div class="container">
@@ -16,51 +19,58 @@
                     @endif
                     <form action="{{ route('productEdit',$product->id) }}" method="GET" enctype="multipart/form-data">
                         @csrf
-                        <div>
-                            ID
-                            <label>{{ $product->id }}</label>
+                        <div class="flex">
+                            <label class="item">ID</label>
+                            <label class="input-item">{{ $product->id }}</label>
                         </div>
-                        <div>
-                            商品画像
+                        <div class="flex">
+                            <label class="item">商品画像</label>
                             @if($product->img_path != null)
-                                <img src="{{ asset($product->img_path) }}" alt="{{ asset($product->img_path) }}">
+                                <img class="image" src="{{ asset($product->img_path) }}" alt="{{ asset($product->img_path) }}">
                             @else
-                                <label></label>
+                                
                             @endif
 
                         </div>
-                        <div>
-                            商品名
-                            <label>{{ $product -> product_name }}</label>
+                        <div class="flex">
+                            <label class="item">商品名</label>
+                            <label class="input-item">{{ $product -> product_name }}</label>
                         </div>
-                        <div>
-                            メーカー
+                        <div class="flex">
+                            <label class="item">メーカー</label>
                             @foreach($companies as $company)
                                 @if($company -> id == $product -> company_id)
-                                    <label>{{ $company -> company_name }}</label>
+                                    <label class="input-item">{{ $company -> company_name }}</label>
                                 @endif
                             @endforeach
                         </div>
-                        <div>
-                            価格
-                            <label>￥{{ $product -> price }}</label>
+                        <div class="flex">
+                            <label class="item">価格</label>
+                            <label class="input-item">￥{{ $product -> price }}</label>
                         </div>
-                        <div>
-                            在庫数
-                            <label>{{ $product -> stock }}</label>
+                        <div class="flex">
+                            <label class="item">在庫数</label>
+                            <label class="input-item">{{ $product -> stock }}</label>
                         </div>
-                        <div>
-                            コメント
+                        <div class="flex">
+                            <label class="item">コメント</label>
                             <textarea></textarea>
                         </div>
-                        <div>
+                        <!--div>
                         <form action="{{ route('productEdit',$product->id) }}" method="GET" enctype="multipart/form-data">
                             <input type="submit" value="編集">
                         </form>
                         <form action="{{ route('productList') }}" method="GET" enctype="multipart/form-data">
                             <input type="submit" value="戻る">
                         </form>
-                        </div>
+                        </div-->
+                        <div class="btn-container">
+                                <input class="edit-btn" type="submit" value="編集">
+                                <a href="{{ route('productList') }}" class="back-btn">
+                                    戻る
+                                </a>
+                            </div>
+
                     </form>
 
                 </div>
