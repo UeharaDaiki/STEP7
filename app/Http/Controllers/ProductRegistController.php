@@ -37,7 +37,11 @@ class ProductRegistController extends Controller
             $fileName = $image->getClientOriginalName();
             $image->storeAs('public/images', $fileName);
             $imagePath = 'storage/images/' . $fileName;
-            $request->merge(['image' => $imagePath]);
+            //$request->merge(['image' => $imagePath]);
+            $request->image = $imagePath;
+            //dd($fileName);
+            //dd($imagePath);
+            //dd($request->image);
         }
         DB::beginTransaction();
 
