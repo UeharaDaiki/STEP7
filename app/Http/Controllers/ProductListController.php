@@ -23,28 +23,6 @@ class ProductListController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    /*
-    public function index()
-    {
-        $products = Product::all();
-        $companies = company::all();
-        return view('productList',compact('products','companies'));
-    }
-        */
-        /*
-    public function index(Request $request)
-{
-    // セッションから商品情報を取得
-    // セッションに商品情報があれば、それを使用
-    //$products = session('products', Product::paginate(10)); // デフォルトでは全商品を表示
-    $products = Product::paginate(10);
-    //$products = session('products', Product::paginate(10));
-    $companies = company::all(); // 会社情報を取得
-
-    // ビューにデータを渡して表示
-    return view('productList', compact('products', 'companies'));
-}
-    */
     public function index(Request $request)
 {
     // 検索条件を受け取る

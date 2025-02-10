@@ -69,15 +69,17 @@
                                             @endif
                                         @endforeach
                                         <td>
-                                            <form action="{{ route('productDetail',['id'=>$product->id]) }}" method="GET">
-                                                @csrf
-                                                <input class="detail-btn" type="submit" value="詳細">
-                                            </form>
-                                            <form action="{{ route('delete',['id'=>$product->id]) }}" method="POST">
-                                                @csrf
-                                                <!--@method('DELETE')-->
-                                                <input type="submit" class="delete-btn" data-id="{{ $product->id }}" name="delete" value="削除">
-                                            </form>
+                                            <div class="btn-container">
+                                                <form action="{{ route('productDetail',['id'=>$product->id]) }}" method="GET">
+                                                    @csrf
+                                                    <input class="detail-btn" type="submit" value="詳細">
+                                                </form>
+                                                <form action="{{ route('delete',['id'=>$product->id]) }}" method="POST">
+                                                    @csrf
+                                                    <!--@method('DELETE')-->
+                                                    <input type="submit" class="delete-btn" data-id="{{ $product->id }}" name="delete" value="削除">
+                                                </form>
+                                            </div>
 
                                         </td>
                                     </tr>

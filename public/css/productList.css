@@ -31,4 +31,28 @@
     background: orange;
     display: inline-block;
     width: auto;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.btn-container {
+    display: flex; /* 横並びにする */
+    gap: 10px; /* ボタン間にスペースを追加 */
+    justify-content: flex-start; /* ボタンを左寄せ */
+    width: auto;
+}
+
+.detail-btn, .delete-btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.detail-btn{
+    display: inline-flex;
+    background-color: blue;
 }
