@@ -34,6 +34,13 @@ class ProductEditController extends Controller
 {
     //$product = Product::find($id);
     // 商品情報を更新
+    if($request->file('image') != null){
+        $image = $request->file('image');
+        $fileName = $image->getClientOriginalName();
+        $image->storeAs('public/images', $fileName);
+        $imagePath = 'storage/images/' . $fileName;
+        $request->image = $imagePath;
+    }
     $model = new Product();
     $model->updateProduct($request,$id);
 

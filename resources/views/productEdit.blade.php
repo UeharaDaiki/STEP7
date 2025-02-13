@@ -54,7 +54,7 @@
                         </div>
                         <div class="flex">
                         <label class="item">商品画像</label>
-                            <input class="input-item" type="file" name="image" value='{{$product->img_path}}'>
+                            <input class="input-item" type="file" name="image">
                         </div>
                         <!--div>
                         <form action="{{ route('edit',$product->id) }}" method="POST" enctype="multipart/form-data">
@@ -66,6 +66,7 @@
                             <input type="submit" value="戻る">
                         </form>
                         </div-->
+                        
                         <div class="btn-container">
                             <input class="edit-btn" type="submit" value="更新">
                             <a href="{{ route('productDetail',$product->id) }}" class="back-btn">

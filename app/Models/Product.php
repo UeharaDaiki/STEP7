@@ -24,14 +24,20 @@ class Product extends Model
     }
 
     public function updateProduct($data,$id){
-        DB::table('products')->where('id', $id)->update([
-            'company_id' => $data->companyId, // inputメソッドを使用
-            'product_name' => $data->productName,
-            'price' => $data->price,
-            'stock' => $data->stock,
-            'comment' => $data->comment,
-            'img_path' => $data->image  // 画像を更新（必要に応じて）
-        ]);
+    // 更新するデータを準備
+    $updateData = [
+        'company_id' => $data->companyId,
+        'product_name' => $data->productName,
+        'price' => $data->price,
+        'stock' => $data->stock,
+        'comment' => $data->comment,
+    ];
+
+    // 画像がnullでない場合のみimg_pathを追加
+    if ($data->image !== null) {
+        $updateData['img_path'] = $data->image;
+    }
+    DB::table('products')->where('id', $id)->update($updateData);
     }
 
 
