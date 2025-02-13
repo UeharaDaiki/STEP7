@@ -7,32 +7,29 @@
 .input-item{
     flex-grow: 1;
     display: flex;
-    justify-content: flex-start; /* 入力フィールドを右寄せ */
+    justify-content: flex-start;
     width: 100%;
 }
 
 .input-id {
-    display: inline-block; /* IDをブロック要素として扱う */
-    text-align: left; /* 左寄せにする */
+    display: inline-block;
+    text-align: left;
 }
+
 .flex{
     display: flex;
     align-items: center;
 }
-/*
-.input{
-    width: 100%;
-    margin-right: 100px;
-}
-    */
+
 .card{
     max-width:50%;
     margin: auto;
 }
+
 .btn-container {
-    display: flex; /* 横並びにする */
-    gap: 10px; /* ボタン間にスペースを追加 */
-    justify-content: flex-start; /* ボタンを左寄せ */
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
     width: auto;
 }
 
@@ -48,14 +45,9 @@
     display: inline-flex;
     background-color: orange;
 }
-/*
-.back-btn{
-    display: inline-flex;
-    background-color: aqua;
-}
-    */
+
 .back-btn {
-    display: inline-block; /* aタグをブロック要素にしてボタンのように表示 */
+    display: inline-block;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
@@ -63,12 +55,14 @@
     border-radius: 5px;
     background-color: aqua;
     color: black;
-    text-align: center; /* テキストを中央に */
-    text-decoration: none; /* リンクの下線を消す */
+    text-align: center;
+    text-decoration: none;
 }
+
 .required{
     color: red;
 }
+
 .image{
     width:100px;
     height: 100px;

@@ -24,40 +24,38 @@ class ProductListController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request)
-{
-    // 検索条件を受け取る
-    $searchProductName = $request->input('searchProductName');
-    $searchCompanyId = $request->input('searchCompanyId');
-    
-    // 商品のクエリビルダーを作成
-    $query = Product::query();
-    
-    // 検索条件があればクエリに追加
-    if ($searchProductName) {
-        $query->where('product_name', 'like', '%' . $searchProductName . '%');
+    {
+        // 検索条件を受け取る
+        $searchProductName = $request->input('searchProductName');
+        $searchCompanyId = $request->input('searchCompanyId');
+        
+        $query = Product::query();
+        // 検索条件があればクエリに追加
+        if ($searchProductName) {
+            // 商品名検索欄に文字が入力されていたら絞り込み
+            $query->where('product_name', 'like', '%' . $searchProductName . '%');
+        }
+        if ($searchCompanyId) {
+            // メーカー名が入力されていたら絞り込み
+            $query->where('company_id', $searchCompanyId);
+        }
+
+        // 絞り込んだ商品を取得
+        $products = $query->paginate(10);
+        
+        // 会社情報を全て取得
+        $companies = company::all();
+
+        return view('productList', compact('products', 'companies', 'searchProductName', 'searchCompanyId'));
     }
-
-    if ($searchCompanyId) {
-        $query->where('company_id', $searchCompanyId);
-    }
-
-    // 絞り込んだ商品を取得
-    $products = $query->paginate(10);
-    
-    // 会社情報を全て取得
-    $companies = company::all();
-
-    return view('productList', compact('products', 'companies', 'searchProductName', 'searchCompanyId'));
-}
-
 
     public function delete($id)
     {
         $product = Product::find($id);
     
         if ($product) {
-            $product->delete();  // 商品を削除
-            // 削除後にリダイレクトしたいURLを返す
+            // 商品をDBから削除
+            $product->delete();
             return response()->json([
                 'success' => true,
                 'message' => '商品が削除されました。',
@@ -72,43 +70,40 @@ class ProductListController extends Controller
     }
 
     public function search(Request $request)
-{
-    // 検索条件を受け取る
-    $searchProductName = $request->input('searchProductName');
-    $searchCompanyId = $request->input('searchCompanyId');
-    
-    // 商品のクエリビルダーを作成
-    $query = Product::query();
-    
-    // 検索条件があればクエリに追加
-    if ($searchProductName) {
-        $query->where('product_name', 'like', '%' . $searchProductName . '%');
-    }
+    {
+        // 検索条件を受け取る
+        $searchProductName = $request->input('searchProductName');
+        $searchCompanyId = $request->input('searchCompanyId');
+        
+        $query = Product::query();
+        // 検索条件があればクエリに追加
+        if ($searchProductName) {
+            // 商品名検索欄に文字が入力されていたら絞り込み
+            $query->where('product_name', 'like', '%' . $searchProductName . '%');
+        }
+        if ($searchCompanyId) {
+            // メーカー名が入力されていたら絞り込み
+            $query->where('company_id', $searchCompanyId);
+        }
 
-    if ($searchCompanyId) {
-        $query->where('company_id', $searchCompanyId);
-    }
+        // 絞り込んだ商品を取得
+        $products = $query->paginate(10);
+        
+        // 会社情報を全て取得
+        $companies = company::all();
 
-    // 絞り込んだ商品を取得
-    $products = $query->paginate(10);
-    
-    // 会社情報を全て取得
-    $companies = company::all();
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'productList' => view('productList', compact('products', 'companies'))->render(),
+                'pagination' => (string) $products->links('pagination::bootstrap-5'),
+            ]);
+        }
 
-    // AJAXでのリクエストであれば、部分的に更新
-    if ($request->ajax()) {
-        return response()->json([
-            'success' => true,
-            'productList' => view('productList', compact('products', 'companies'))->render(),
-            'pagination' => (string) $products->links('pagination::bootstrap-5'),
+        return redirect()->route('productList', [
+            'searchProductName' => $searchProductName,
+            'searchCompanyId' => $searchCompanyId,
         ]);
     }
-
-    // 通常のリダイレクト
-    return redirect()->route('productList', [
-        'searchProductName' => $searchProductName,
-        'searchCompanyId' => $searchCompanyId,
-    ]);
-}
     
 }

@@ -31,17 +31,20 @@ class ProductRegistController extends Controller
         return view('productRegist', compact('companies'));
     }
 
-    public function regist(ProductRequest $request){
+    public function regist(ProductRequest $request)
+    {
+        // 画像がnullでなければ登録の処理
         if($request->file('image') != null){
+            // リクエストからimageを取得
             $image = $request->file('image');
+            // ファイル名を取得
             $fileName = $image->getClientOriginalName();
+            // ファイルに保存処理
             $image->storeAs('public/images', $fileName);
+            // DBに登録する用のpathを用意
             $imagePath = 'storage/images/' . $fileName;
-            //$request->merge(['image' => $imagePath]);
+            //リクエストに再代入
             $request->image = $imagePath;
-            //dd($fileName);
-            //dd($imagePath);
-            //dd($request->image);
         }
         DB::beginTransaction();
 

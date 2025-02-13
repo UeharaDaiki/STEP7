@@ -10,10 +10,11 @@
     text-align: center;
     padding: 10px;
 }
+
 .product-table img {
-    max-width: 50px; /* 最大幅を100pxに設定 */
-    max-height: 50px; /* 最大高さを100pxに設定 */
-    object-fit: cover; /* 画像が枠に収まるように調整 */
+    max-width: 50px;
+    max-height: 50px;
+    object-fit: cover;
 }
 
 .detail-btn{
@@ -37,10 +38,11 @@
     font-size: 16px;
     border-radius: 5px;
 }
+
 .btn-container {
-    display: flex; /* 横並びにする */
-    gap: 10px; /* ボタン間にスペースを追加 */
-    justify-content: flex-start; /* ボタンを左寄せ */
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
     width: auto;
 }
 

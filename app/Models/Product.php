@@ -10,15 +10,15 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function registProduct($data){
-        //dd($data -> all());
+    public function registProduct($data)
+    {
         DB::table('products')->insert([
-            'company_id' => $data->companyId, // inputメソッドを使用
+            'company_id' => $data->companyId,
             'product_name' => $data->productName,
             'price' => $data->price,
             'stock' => $data->stock,
             'comment' => $data->comment,
-            'img_path' => $data->image  // 必要に応じて追加
+            'img_path' => $data->image
      
         ]);
     }
@@ -32,11 +32,11 @@ class Product extends Model
         'stock' => $data->stock,
         'comment' => $data->comment,
     ];
-
     // 画像がnullでない場合のみimg_pathを追加
     if ($data->image !== null) {
         $updateData['img_path'] = $data->image;
     }
+    // 更新処理
     DB::table('products')->where('id', $id)->update($updateData);
     }
 

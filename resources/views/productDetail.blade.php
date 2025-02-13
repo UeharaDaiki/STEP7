@@ -30,7 +30,6 @@
                             @else
                                 
                             @endif
-
                         </div>
                         <div class="flex">
                             <label class="item">商品名</label>
@@ -56,23 +55,13 @@
                             <label class="item">コメント</label>
                             <label class="input-item">{{ $product -> comment }}</label>
                         </div>
-                        <!--div>
-                        <form action="{{ route('productEdit',$product->id) }}" method="GET" enctype="multipart/form-data">
-                            <input type="submit" value="編集">
-                        </form>
-                        <form action="{{ route('productList') }}" method="GET" enctype="multipart/form-data">
-                            <input type="submit" value="戻る">
-                        </form>
-                        </div-->
                         <div class="btn-container">
-                                <input class="edit-btn" type="submit" value="編集">
-                                <a href="{{ route('productList') }}" class="back-btn">
-                                    戻る
-                                </a>
-                            </div>
-
+                            <input class="edit-btn" type="submit" value="編集">
+                            <a href="{{ route('productList') }}" class="back-btn">
+                                戻る
+                            </a>
+                        </div>
                     </form>
-
                 </div>
             </div>
         </div>

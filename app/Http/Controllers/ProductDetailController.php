@@ -25,9 +25,10 @@ class ProductDetailController extends Controller
      */
     public function index($id)
     {
+        // 画面表示に必要なデータを取得
         $product = Product::find($id);
         $companies = Company::all();
-        //dd($products);
+
         return view('productDetail',compact('product','companies'));
     }
 }

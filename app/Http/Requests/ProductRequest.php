@@ -24,12 +24,13 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'productName' => 'required|string|max:255', // 商品名のバリデーション
-            'companyId'   => 'required|exists:companies,id', // メーカーIDがcompaniesテーブルに存在するかチェック
-            'price'        => 'required|min:0', // 価格のバリデーション
-            'stock'        => 'required|integer|min:0', // 在庫数のバリデーション
-            'comment'      => 'nullable|string|max:255', // コメントのバリデーション
+            //　バリデーション
+            'productName' => 'required',
+            'companyId'   => 'required',
+            'price'        => 'required',
+            'stock'        => 'required',
+            'comment'      => 'nullable',
+            'img_path'      => 'nullable',
             
         ];
     }

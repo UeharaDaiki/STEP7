@@ -50,7 +50,6 @@
                             </thead>
                             <tbody>
                                 @foreach($products as $product)
-                                
                                     <tr>
                                         <td>{{ $product -> id}}</td>
                                         @if($product->img_path != null)
@@ -80,18 +79,15 @@
                                                     <input type="submit" class="delete-btn" data-id="{{ $product->id }}" name="delete" value="削除">
                                                 </form>
                                             </div>
-
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                         <div>
-                        {{ $products->appends(request()->query())->links('pagination::bootstrap-5') }}
-                                </div>
-
+                            {{ $products->appends(request()->query())->links('pagination::bootstrap-5') }}
+                        </div>
                     </div>
-                    
                 </div>
             </div>
         </div>

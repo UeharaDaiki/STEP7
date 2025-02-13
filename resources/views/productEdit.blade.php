@@ -25,7 +25,6 @@
                             <label class="item">ID.</label>
                             <label class="input-item input-id">{{$product->id}}</label>
                         </div>
-
                         <div class="flex">
                             <label class="item">商品名<label class="required">*</label></label>
                             <input class="input-item" type="text" name="productName" value='{{$product->product_name}}'>
@@ -41,41 +40,28 @@
                             </select>
                         </div>
                         <div class="flex">
-                        <label class="item">価格<label class="required">*</label></label>
+                            <label class="item">価格<label class="required">*</label></label>
                             <input class="input-item" type="text" name="price" value='{{$product->price}}'>
                         </div>
                         <div class="flex">
-                        <label class="item">在庫数<label class="required">*</label></label>
+                            <label class="item">在庫数<label class="required">*</label></label>
                             <input class="input-item" type="text" name="stock" value='{{$product->stock}}'>
                         </div>
                         <div class="flex">
-                        <label class="item">コメント</label>
+                            <label class="item">コメント</label>
                             <input class="input-item" type="text" name="comment" value='{{$product->comment}}'>
                         </div>
                         <div class="flex">
-                        <label class="item">商品画像</label>
+                            <label class="item">商品画像</label>
                             <input class="input-item" type="file" name="image">
                         </div>
-                        <!--div>
-                        <form action="{{ route('edit',$product->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                            <input type="submit" value="更新">
-                        </form>
-                        <form action="{{ route('productDetail',$product->id) }}" method="GET" enctype="multipart/form-data">
-                        @csrf
-                            <input type="submit" value="戻る">
-                        </form>
-                        </div-->
-                        
                         <div class="btn-container">
                             <input class="edit-btn" type="submit" value="更新">
                             <a href="{{ route('productDetail',$product->id) }}" class="back-btn">
                                 戻る
                             </a>
                         </div>
-
                     </form>
-
                 </div>
             </div>
         </div>

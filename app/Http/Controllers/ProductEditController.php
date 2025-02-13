@@ -27,13 +27,13 @@ class ProductEditController extends Controller
     {
         $companies = Company::all();
         $product = Product::find($id);
+
         return view('productEdit',compact('companies','product'));
     }
 
     public function edit(Request $request, $id)
 {
-    //$product = Product::find($id);
-    // 商品情報を更新
+    // 商品画像に変更があれば更新
     if($request->file('image') != null){
         $image = $request->file('image');
         $fileName = $image->getClientOriginalName();
@@ -41,10 +41,10 @@ class ProductEditController extends Controller
         $imagePath = 'storage/images/' . $fileName;
         $request->image = $imagePath;
     }
+    // 商品情報を更新
     $model = new Product();
     $model->updateProduct($request,$id);
 
-    //$product->update($request->all(),$id);
     return redirect()->route('productDetail', ['id' => $id])->with('status', '商品情報が更新されました');
 }
 }
