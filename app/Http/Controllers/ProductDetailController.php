@@ -29,6 +29,6 @@ class ProductDetailController extends Controller
         $product = Product::find($id);
         $companies = Company::all();
 
-        return view('productDetail',compact('product','companies'));
+        return view('product_detail',compact('product','companies'));
     }
 }

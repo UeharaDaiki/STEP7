@@ -23,14 +23,10 @@ Route::get('/productList', [App\Http\Controllers\ProductListController::class, '
 Route::post('/product/delete/{id}', [App\Http\Controllers\ProductListController::class, 'delete'])->name('delete');
 Route::post('/product/search', [App\Http\Controllers\ProductListController::class, 'search'])->name('search');
 
-
 Route::get('/productRegist', [App\Http\Controllers\ProductRegistController::class, 'index'])->name('productRegist');
 Route::post('/productRegist', [App\Http\Controllers\ProductRegistController::class, 'regist'])->name('regist');
 
-//Route::get('/productRegist', [App\Http\Controllers\ProductRegistController::class, 'index'])->name('productRegist');
-
 Route::get('/productDetail/{id}', [App\Http\Controllers\ProductDetailController::class, 'index'])->name('productDetail');
-
 
 Route::get('/productEdit/{id}', [App\Http\Controllers\ProductEditController::class, 'index'])->name('productEdit');
 Route::post('/productEdit/{id}', [App\Http\Controllers\ProductEditController::class, 'edit'])->name('edit');

@@ -28,7 +28,7 @@ class ProductRegistController extends Controller
     public function index()
     {
         $companies = Company::all();
-        return view('productRegist', compact('companies'));
+        return view('product_regist', compact('companies'));
     }
 
     public function regist(ProductRequest $request)

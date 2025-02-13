@@ -28,7 +28,7 @@ class ProductEditController extends Controller
         $companies = Company::all();
         $product = Product::find($id);
 
-        return view('productEdit',compact('companies','product'));
+        return view('product_edit',compact('companies','product'));
     }
 
     public function edit(Request $request, $id)

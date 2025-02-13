@@ -46,7 +46,7 @@ class ProductListController extends Controller
         // 会社情報を全て取得
         $companies = company::all();
 
-        return view('productList', compact('products', 'companies', 'searchProductName', 'searchCompanyId'));
+        return view('product_list', compact('products', 'companies', 'searchProductName', 'searchCompanyId'));
     }
 
     public function delete($id)
@@ -95,7 +95,7 @@ class ProductListController extends Controller
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
-                'productList' => view('productList', compact('products', 'companies'))->render(),
+                'productList' => view('product_list', compact('products', 'companies'))->render(),
                 'pagination' => (string) $products->links('pagination::bootstrap-5'),
             ]);
         }
