@@ -54,7 +54,7 @@
                         </div>
                         <div class="flex">
                             <label class="item">コメント</label>
-                            <textarea></textarea>
+                            <label class="input-item">{{ $product -> comment }}</label>
                         </div>
                         <!--div>
                         <form action="{{ route('productEdit',$product->id) }}" method="GET" enctype="multipart/form-data">
