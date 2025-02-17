@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    console.log('Script loaded');
     $('.delete-btn').click(function(event) {
         event.preventDefault();
         var productId = $(this).data('id');
@@ -44,7 +43,6 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-    console.log('Script loaded');
     $('.search-btn').click(function() {
 
         if (!confirm('検索しますか？')) {
@@ -70,10 +68,6 @@ $(document).ready(function() {
             success: function(response) {
                 if (response.success) {
                     // 新しいページに遷移する前に、ページネーションを更新する
-                    //$('.pagination').html(response.pagination);
-                    // 検索結果を表示する（新しいページのコンテンツを更新）
-                    //$('.product-list').html(response.product_list);
-                    //window.location.href = response.productList;
                     $('.product-table tbody').html(response.productList);
                     // ページネーションを更新
                     $('.pagination').html(response.pagination);
