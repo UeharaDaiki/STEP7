@@ -33,22 +33,22 @@ class ProductRegistController extends Controller
 
     public function regist(ProductRequest $request)
     {
-        // 画像がnullでなければ登録の処理
-        if($request->file('image') != null){
-            // リクエストからimageを取得
-            $image = $request->file('image');
-            // ファイル名を取得
-            $fileName = $image->getClientOriginalName();
-            // ファイルに保存処理
-            $image->storeAs('public/images', $fileName);
-            // DBに登録する用のpathを用意
-            $imagePath = 'storage/images/' . $fileName;
-            //リクエストに再代入
-            $request->image = $imagePath;
-        }
-        DB::beginTransaction();
-
         try{
+            // 画像がnullでなければ登録の処理
+            if($request->file('image') != null){
+                // リクエストからimageを取得
+                $image = $request->file('image');
+                // ファイル名を取得
+                $fileName = $image->getClientOriginalName();
+                // ファイルに保存処理
+                $image->storeAs('public/images', $fileName);
+                // DBに登録する用のpathを用意
+                $imagePath = 'storage/images/' . $fileName;
+                //リクエストに再代入
+                $request->image = $imagePath;
+            }
+            DB::beginTransaction();
+            
             $model = new Product();
             $model->registProduct($request);
             DB::commit();
