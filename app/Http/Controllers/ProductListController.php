@@ -51,24 +51,33 @@ class ProductListController extends Controller
 
     public function delete($id)
     {
-        $product = Product::find($id);
+        try {
+            $product = Product::find($id);
     
-        if ($product) {
-            // 商品をDBから削除
-            $product->delete();
+            if ($product) {
+                // 商品をDBから削除
+                $product->delete();
+                return response()->json([
+                    'success' => true,
+                    'message' => '商品が削除されました。',
+                    'redirect_url' => route('productList')  // 商品一覧ページにリダイレクト
+                ]);
+            }
+    
             return response()->json([
-                'success' => true,
-                'message' => '商品が削除されました。',
-                'redirect_url' => route('productList')  // 商品一覧ページにリダイレクト
+                'success' => false,
+                'message' => '商品が見つかりません。',
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('商品削除エラー: ' . $e->getMessage());
+            
+            return response()->json([
+                'success' => false,
+                'message' => '商品削除中にエラーが発生しました。後ほどもう一度試してください。',
             ]);
         }
-    
-        return response()->json([
-            'success' => false,
-            'message' => '商品が見つかりません。',
-        ]);
     }
-
+    
     public function search(Request $request)
     {
         // 検索条件を受け取る
