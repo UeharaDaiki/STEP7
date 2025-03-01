@@ -30,6 +30,10 @@
                                 @endforeach
                             </select>
                             <input class="search-btn" type="submit" value="検索">
+                            <div>
+                                <input name="minPrice" type="text" placeholder="価格下限">～<input name="maxPrice" type="text" placeholder="価格上限">
+                                <input name="minStock" type="text" placeholder="在庫下限">～<input name="maxStock" type="text" placeholder="在庫上限">
+                            </div>
                         </form>
                     </div>
 

@@ -28,6 +28,11 @@ class ProductListController extends Controller
         // 検索条件を受け取る
         $searchProductName = $request->input('searchProductName');
         $searchCompanyId = $request->input('searchCompanyId');
+        $maxPrice = $request->input('maxPrice');
+        $minPrice = $request->input('minPrice');
+        $maxStock = $request->input('maxStock');
+        $minStock = $request->input('minStock');
+
         
         $query = Product::query();
         // 検索条件があればクエリに追加
@@ -39,6 +44,34 @@ class ProductListController extends Controller
             // メーカー名が入力されていたら絞り込み
             $query->where('company_id', $searchCompanyId);
         }
+        if($maxPrice!=null || $minPrice!=null){
+            if($maxPrice!=null && $minPrice!=null){
+                //どちらの入力がある
+                $query->whereBetween('price',[$minPrice,$maxPrice]);
+                //dd($minPrice);
+            }elseif($maxPrice!=null){
+                //上限だけ入力がある
+                $query->where('price','<=',$maxPrice);
+            }elseif($minPrice!=null){
+                //下限だけ入力がある
+                $query->where('price','>=',$minPrice);
+            }
+        }
+        if($maxStock!=null || $minStock!=null){
+            if($maxStock!=null && $minStock!=null){
+                //どちらの入力がある
+                $query->whereBetween('stock',[$minStock,$maxStock]);
+                //dd($minPrice);
+            }elseif($maxStock!=null){
+                //上限だけ入力がある
+                $query->where('stock','<=',$maxStock);
+            }elseif($minStock!=null){
+                //下限だけ入力がある
+                $query->where('stock','>=',$minStock);
+            }
+        }
+
+
 
         // 絞り込んだ商品を取得
         $products = $query->paginate(10);
@@ -46,7 +79,7 @@ class ProductListController extends Controller
         // 会社情報を全て取得
         $companies = company::all();
 
-        return view('product_list', compact('products', 'companies', 'searchProductName', 'searchCompanyId'));
+        return view('product_list', compact('products', 'companies', 'searchProductName', 'searchCompanyId','maxPrice','minPrice'));
     }
 
     public function delete($id)
@@ -80,9 +113,14 @@ class ProductListController extends Controller
     
     public function search(Request $request)
     {
+        //dd($request);
         // 検索条件を受け取る
         $searchProductName = $request->input('searchProductName');
         $searchCompanyId = $request->input('searchCompanyId');
+        $maxPrice = $request->input('maxPrice');
+        $minPrice = $request->input('minPrice');
+        $maxStock = $request->input('maxStock');
+        $minStock = $request->input('minStock');
         
         $query = Product::query();
         // 検索条件があればクエリに追加
@@ -94,6 +132,41 @@ class ProductListController extends Controller
             // メーカー名が入力されていたら絞り込み
             $query->where('company_id', $searchCompanyId);
         }
+
+       // $minPrice = (float) $minPrice;
+        //$maxPrice = (float) $maxPrice;        
+        if($maxPrice!=null || $minPrice!=null){
+            if($maxPrice!=null && $minPrice!=null){
+                //どちらの入力がある
+                $query->whereBetween('price',[$minPrice,$maxPrice]);
+                //dd($query->toSql());
+                //dd($query->toSql(), $query->getBindings());
+
+
+                //dd($minPrice,$maxPrice);
+            }elseif($maxPrice!=null){
+                //上限だけ入力がある
+                $query->where('price','<=',$maxPrice);
+            }elseif($minPrice!=null){
+                //下限だけ入力がある
+                $query->where('price','>=',$minPrice);
+            }
+        }
+        if($maxStock!=null || $minStock!=null){
+            if($maxStock!=null && $minStock!=null){
+                //どちらの入力がある
+                $query->whereBetween('stock',[$minStock,$maxStock]);
+                //dd($query->toSql(), $query->getBindings());
+                //dd($minPrice);
+            }elseif($maxStock!=null){
+                //上限だけ入力がある
+                $query->where('stock','<=',$maxStock);
+            }elseif($minStock!=null){
+                //下限だけ入力がある
+                $query->where('stock','>=',$minStock);
+            }
+        }
+
 
         // 絞り込んだ商品を取得
         $products = $query->paginate(10);
@@ -112,6 +185,11 @@ class ProductListController extends Controller
         return redirect()->route('productList', [
             'searchProductName' => $searchProductName,
             'searchCompanyId' => $searchCompanyId,
+            'maxPrice' => $maxPrice,
+            'minPrice' => $minPrice,
+            'maxStock' => $maxStock,
+            'minStock' => $minStock,
+
         ]);
     }
     

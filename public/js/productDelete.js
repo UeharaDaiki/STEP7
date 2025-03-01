@@ -50,6 +50,11 @@ $(document).ready(function() {
         }
         var searchProductName = $('input[name="searchProductName"]').val();
         var searchCompanyId = $('select[name="searchCompanyId"]').val();
+        var maxPrice = $('input[name="maxPrice"]').val();
+        var minPrice = $('input[name="minPrice"]').val();
+        var maxStock = $('input[name="maxStock"]').val();
+        var minStock = $('input[name="minStock"]').val();
+
         // CSRFトークンを取得
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -60,12 +65,20 @@ $(document).ready(function() {
             data: {
                 _token: csrfToken,
                 searchProductName: searchProductName,
-                searchCompanyId: searchCompanyId
+                searchCompanyId: searchCompanyId,
+                maxPrice: maxPrice,
+                minPrice: minPrice,
+                maxStock: maxStock,
+                minStock: minStock
+
             },
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'
             },
             success: function(response) {
+                console.log(maxPrice);
+                console.log(minPrice);
+
                 if (response.success) {
                     // 新しいページに遷移する前に、ページネーションを更新する
                     $('.product-table tbody').html(response.productList);
