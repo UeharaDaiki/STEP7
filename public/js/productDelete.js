@@ -100,3 +100,7 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    // テーブルをsortableにする
+    $("#table").tablesorter();
+});

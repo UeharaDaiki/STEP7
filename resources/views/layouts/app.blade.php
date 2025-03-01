@@ -15,6 +15,12 @@
     
     @yield('styles')
     <link rel="stylesheet" href="{{ ('css/productList.css') }}">
+    <!-- tablesorter CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tablesorter@2.32.0/dist/css/theme.default.min.css">
+    <!-- tablesorter jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tablesorter@2.32.0/dist/js/jquery.tablesorter.min.js"></script>
+
     
 </head>
 <body>
@@ -77,7 +83,6 @@
             @yield('content')
         </main>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('js/productDelete.js') }}"></script> <!-- 修正: スクリプトのパスを更新 -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])  <!-- Viteのスクリプトはそのまま -->
 

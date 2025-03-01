@@ -38,7 +38,7 @@
                     </div>
 
                     <div>
-                        <table class="product-table">
+                        <table class="product-table" id="table">
                             <thead>
                                 <tr>
                                     <th>ID</th>
