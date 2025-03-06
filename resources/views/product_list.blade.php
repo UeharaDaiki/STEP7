@@ -30,8 +30,10 @@
                                 @endforeach
                             </select>
                             <div>
-                                <input name="minPrice" type="text" placeholder="価格下限">～<input name="maxPrice" type="text" placeholder="価格上限">
-                                <input name="minStock" type="text" placeholder="在庫下限">～<input name="maxStock" type="text" placeholder="在庫上限">
+                                <input name="minPrice" type="text" value="{{ request('minPrice') }}" placeholder="価格下限">
+                                ～<input name="maxPrice" type="text" value="{{ request('maxPrice') }}" placeholder="価格上限">
+                                <input name="minStock" type="text" value="{{ request('minStock') }}" placeholder="在庫下限">
+                                ～<input name="maxStock" type="text" value="{{ request('maxStock') }}" placeholder="在庫上限">
                                 <input class="search-btn" type="submit" value="検索">
                             </div>
                         </form>
