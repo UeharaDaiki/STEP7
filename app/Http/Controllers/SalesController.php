@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Sales;
+use Illuminate\Support\Facades\DB;
 
 class SalesController extends Controller
 {
@@ -29,7 +30,7 @@ class SalesController extends Controller
             $sale = new Sales;
             $sale->product_id = $productId;
             $sale->save();
-            
+
             DB::commit();
 
             return response()->json(['message' => '購入成功']);
